@@ -192,8 +192,42 @@
   .stat-board .label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#9a9d96;}
   .stat-board .val{font-family:var(--display);font-weight:700;font-size:38px;color:var(--yellow);}
 
-  /* ---------- Intake form (Google Forms embed) ---------- */
+
+  /* ---------- Full services grid ---------- */
+  .svc-list{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:2px solid var(--ink);margin-top:48px;}
+  .svc-item{background:var(--white);padding:18px 20px;display:flex;align-items:baseline;gap:14px;position:relative;}
+  .svc-item .n{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.06em;}
+  .svc-item .t{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:20px;line-height:1.1;}
+  .svc-item.featured{background:var(--ink);}
+  .svc-item.featured .t{color:var(--yellow);}
+  .svc-item.featured .n{color:#9a9d96;}
+  .svc-item .newtag{position:absolute;top:8px;right:10px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;background:var(--yellow);color:var(--ink);padding:2px 7px;}
+  @media (max-width:900px){.svc-list{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.svc-list{grid-template-columns:1fr;}}
+
+  /* ---------- Top-5 rank badges ---------- */
+  .work-card{position:relative;}
+  .rank{position:absolute;top:-2px;left:-2px;z-index:2;background:var(--ink);color:var(--yellow);font-family:var(--mono);font-size:13px;letter-spacing:.08em;padding:6px 12px;border:2px solid var(--ink);}
+
+  /* ---------- Native intake form ---------- */
+  /* ---------- Intake form ---------- */
   .intake .section-intro{margin-bottom:8px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .field{margin-bottom:22px;}
+  label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:8px;}
+  label .req{color:#c0392b;}
+  input,select,textarea{width:100%;font-family:var(--body);font-size:16px;color:var(--ink);background:var(--paper);border:2px solid var(--line);padding:12px 14px;transition:border-color .12s ease;}
+  input:focus,select:focus,textarea:focus{border-color:var(--ink);outline:none;}
+  textarea{min-height:130px;resize:vertical;}
+  .form-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:8px;}
+  .form-note{font-size:14px;color:var(--steel);}
+  .confirm{display:none;margin-top:24px;border:2px solid var(--ink);background:var(--yellow);padding:20px 24px;font-weight:600;}
+  .confirm.show{display:block;}
+  .form-error{display:none;margin-top:24px;border:2px solid #c0392b;background:#fdecea;padding:16px 20px;font-size:15px;}
+  .form-error.show{display:block;}
+  form.intake-form{margin-top:44px;background:var(--white);border:2px solid var(--ink);padding:40px;max-width:820px;position:relative;}
+  form.intake-form::before{content:"WORK ORDER — NEW PROJECT";position:absolute;top:-14px;left:24px;background:var(--yellow);color:var(--ink);font-family:var(--mono);font-size:12px;letter-spacing:.12em;padding:4px 12px;}
+  @media (max-width:640px){form.intake-form{padding:28px 20px;}.form-row{grid-template-columns:1fr;gap:0;}}
   .gform-frame{
     margin-top:44px;background:var(--white);border:2px solid var(--ink);
     padding:24px 16px 16px;max-width:820px;position:relative;
@@ -269,7 +303,7 @@
       <a href="#services">Services</a>
       <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="story.html">Our Story</a>
+      <a href="/story">Our Story</a>
       <a href="#intake" class="btn">Start a Project</a>
     </nav>
   </div>
@@ -300,8 +334,8 @@
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>Storefront Signs</span><span>Vehicle Wraps</span><span>Banners</span><span>Dimensional Letters</span><span>Window Vinyl</span><span>Trade Show Displays</span><span>Wayfinding</span><span>A-Frames</span>
-    <span>Storefront Signs</span><span>Vehicle Wraps</span><span>Banners</span><span>Dimensional Letters</span><span>Window Vinyl</span><span>Trade Show Displays</span><span>Wayfinding</span><span>A-Frames</span>
+    <span>Environmental Graphics</span><span>Large Format Printing</span><span>Wall Wraps</span><span>Trade Show Displays</span><span>ADA &amp; Tactile Signage</span><span>Custom Fabrication</span><span>National Installation</span><span>Directional Signage</span>
+    <span>Environmental Graphics</span><span>Large Format Printing</span><span>Wall Wraps</span><span>Trade Show Displays</span><span>ADA &amp; Tactile Signage</span><span>Custom Fabrication</span><span>National Installation</span><span>Directional Signage</span>
   </div>
 </div>
 
@@ -311,28 +345,28 @@
     <p class="eyebrow">What we do</p>
     <h2>One call, start to finish</h2>
     <p class="section-intro">
-      Most sign projects mean juggling a designer, a print shop, a fabricator, and an installer.
-      Here, that's one phone number. I sit in the middle of all of it so you don't have to.
+      From environmental graphics to trade show floors to full custom fabrication — one point of
+      contact handles design, production, shipping, and installation anywhere in the country.
     </p>
-    <div class="svc-grid">
-      <div class="svc">
-        <span class="tag">STEP 1</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="6" y="8" width="36" height="26" stroke="#16181d" stroke-width="3"/><path d="M14 26l6-8 5 6 4-4 5 6" stroke="#f5c211" stroke-width="3" fill="none"/><path d="M18 40h12" stroke="#16181d" stroke-width="3"/></svg>
-        <h3>Design</h3>
-        <p>Concepts built for visibility — from logo adaptation to full sign design. You approve a proof before anything gets made.</p>
-      </div>
-      <div class="svc">
-        <span class="tag">STEP 2</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="8" y="6" width="32" height="20" stroke="#16181d" stroke-width="3"/><path d="M8 32h32M12 38h24" stroke="#f5c211" stroke-width="3"/><circle cx="24" cy="16" r="4" stroke="#16181d" stroke-width="3"/></svg>
-        <h3>Print &amp; Fabrication</h3>
-        <p>Trusted manufacturing partners for vinyl, dimensional letters, illuminated signs, wraps, and large-format print — quality checked before it ships.</p>
-      </div>
-      <div class="svc">
-        <span class="tag">STEP 3</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M10 40V22l14-12 14 12v18" stroke="#16181d" stroke-width="3" fill="none"/><rect x="18" y="10" width="12" height="7" fill="#f5c211"/><path d="M18 40v-8h12v8" stroke="#16181d" stroke-width="3" fill="none"/></svg>
-        <h3>Delivery &amp; Install</h3>
-        <p>Coordinated distribution and installation, timed around your opening, your event, or your fleet's schedule.</p>
-      </div>
+    <div class="svc-list">
+      <div class="svc-item"><span class="n">01</span><span class="t">Environmental Graphics</span></div>
+      <div class="svc-item"><span class="n">02</span><span class="t">Outdoor Graphics and Signage</span></div>
+      <div class="svc-item"><span class="n">03</span><span class="t">Large Format Printing</span></div>
+      <div class="svc-item"><span class="n">04</span><span class="t">Floor Graphics</span></div>
+      <div class="svc-item"><span class="n">05</span><span class="t">Window Treatments &amp; Privacy Film</span></div>
+      <div class="svc-item"><span class="n">06</span><span class="t">Wall Wraps</span></div>
+      <div class="svc-item"><span class="n">07</span><span class="t">Indoor &amp; Outdoor Banners</span></div>
+      <div class="svc-item"><span class="n">08</span><span class="t">Trade Show Displays &amp; Graphics</span></div>
+      <div class="svc-item"><span class="n">09</span><span class="t">Movie Set Graphics</span></div>
+      <div class="svc-item"><span class="n">10</span><span class="t">SEG Graphics</span></div>
+      <div class="svc-item"><span class="n">11</span><span class="t">ADA and Tactile Signage</span></div>
+      <div class="svc-item"><span class="n">12</span><span class="t">Promotional Products</span></div>
+      <div class="svc-item"><span class="n">13</span><span class="t">Construction Barricades</span></div>
+      <div class="svc-item"><span class="n">14</span><span class="t">Shipping &amp; Distribution</span></div>
+      <div class="svc-item"><span class="n">15</span><span class="t">Custom Fabrication</span></div>
+      <div class="svc-item"><span class="n">16</span><span class="t">Step and Repeat Banners</span></div>
+      <div class="svc-item"><span class="n">17</span><span class="t">Directional Signage</span></div>
+      <div class="svc-item featured"><span class="n">18</span><span class="t">National Installation Services</span><span class="newtag">NEW</span></div>
     </div>
   </div>
 </section>
@@ -372,13 +406,14 @@
 <section id="work">
   <div class="wrap">
     <p class="eyebrow">Portfolio</p>
-    <h2>Recent work</h2>
-    <p class="section-intro">A sample of projects across Philadelphia and the surrounding area.</p>
+    <h2>Top 5 projects</h2>
+    <p class="section-intro">Five favorites from the portfolio — the projects clients ask about most.</p>
 
     <div class="work-grid">
       <!-- REPLACE each SVG placeholder with a real photo:
            <img src="photos/your-photo.jpg" alt="Describe the sign"> -->
-      <a class="work-card" href="#intake">
+      <a class="work-card" href="/work/cafe-sign">
+        <span class="rank">01</span>
         <div class="thumb" aria-hidden="true">
           <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#8a4b3b"/><rect x="0" y="0" width="400" height="300" fill="url(#brick1)"/><defs><pattern id="brick1" width="60" height="30" patternUnits="userSpaceOnUse"><rect width="60" height="30" fill="#8a4b3b"/><path d="M0 15h60M30 0v15M0 15v15M60 15v15M15 15v15M45 15v15" stroke="#6e392c" stroke-width="2"/></pattern></defs><rect x="60" y="80" width="280" height="90" fill="#16181d" stroke="#f5c211" stroke-width="4"/><text x="200" y="138" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="44" fill="#f5c211" letter-spacing="4">CAFÉ SIGN</text><rect x="120" y="190" width="160" height="70" fill="#2b2e34"/><rect x="130" y="198" width="140" height="54" fill="#c9d4d8" opacity=".7"/></svg>
         </div>
@@ -388,7 +423,8 @@
         </div>
       </a>
 
-      <a class="work-card" href="#intake">
+      <a class="work-card" href="/work/van-wraps">
+        <span class="rank">02</span>
         <div class="thumb" aria-hidden="true">
           <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#c9d4d8"/><rect x="40" y="90" width="300" height="120" rx="14" fill="#f1f2ee" stroke="#16181d" stroke-width="4"/><rect x="40" y="90" width="300" height="120" rx="14" fill="none"/><path d="M40 150h300" stroke="#f5c211" stroke-width="26"/><text x="190" y="160" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="30" fill="#16181d">PLUMBING CO.</text><circle cx="100" cy="212" r="22" fill="#16181d"/><circle cx="290" cy="212" r="22" fill="#16181d"/><rect x="330" y="110" width="10" height="40" fill="#16181d"/></svg>
         </div>
@@ -397,18 +433,8 @@
           <h3>Service van wraps</h3>
         </div>
       </a>
-
-      <a class="work-card" href="#intake">
-        <div class="thumb" aria-hidden="true">
-          <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#5b6068"/><rect x="70" y="60" width="260" height="150" fill="#f5c211" stroke="#16181d" stroke-width="4"/><circle cx="85" cy="75" r="5" fill="#16181d"/><circle cx="315" cy="75" r="5" fill="#16181d"/><circle cx="85" cy="195" r="5" fill="#16181d"/><circle cx="315" cy="195" r="5" fill="#16181d"/><text x="200" y="125" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="38" fill="#16181d">GRAND OPENING</text><text x="200" y="170" text-anchor="middle" font-family="IBM Plex Mono" font-size="16" fill="#16181d">SATURDAY 10AM</text></svg>
-        </div>
-        <div class="work-meta">
-          <span class="cat">Banner · Event</span>
-          <h3>Grand opening banner</h3>
-        </div>
-      </a>
-
-      <a class="work-card" href="#intake">
+      <a class="work-card" href="/work/lobby-letters">
+        <span class="rank">03</span>
         <div class="thumb" aria-hidden="true">
           <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#2b2e34"/><text x="200" y="160" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="72" fill="#f1f2ee" letter-spacing="6">STUDIO</text><text x="200" y="160" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="72" fill="none" stroke="#f5c211" stroke-width="1.5" letter-spacing="6" transform="translate(4,4)">STUDIO</text></svg>
         </div>
@@ -418,7 +444,8 @@
         </div>
       </a>
 
-      <a class="work-card" href="#intake">
+      <a class="work-card" href="/work/window-graphics">
+        <span class="rank">04</span>
         <div class="thumb" aria-hidden="true">
           <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#1d2026"/><rect x="60" y="30" width="280" height="240" fill="#3d4a52" opacity=".9"/><rect x="60" y="30" width="280" height="240" fill="none" stroke="#16181d" stroke-width="8"/><text x="200" y="130" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="34" fill="#f1f2ee">BARBER SHOP</text><path d="M140 160h120" stroke="#f5c211" stroke-width="4"/><text x="200" y="200" text-anchor="middle" font-family="IBM Plex Mono" font-size="15" fill="#c9ccc5">WALK-INS WELCOME</text></svg>
         </div>
@@ -428,7 +455,8 @@
         </div>
       </a>
 
-      <a class="work-card" href="#intake">
+      <a class="work-card" href="/work/trade-show-booth">
+        <span class="rank">05</span>
         <div class="thumb" aria-hidden="true">
           <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#c9ccc5"/><rect x="90" y="50" width="220" height="180" fill="#16181d"/><rect x="105" y="65" width="190" height="110" fill="#f5c211"/><text x="200" y="130" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="30" fill="#16181d">BOOTH 214</text><rect x="105" y="185" width="190" height="30" fill="#f1f2ee"/><text x="200" y="206" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#16181d">TRADE SHOW DISPLAY</text><path d="M140 230l-20 40M260 230l20 40" stroke="#16181d" stroke-width="6"/></svg>
         </div>
@@ -490,43 +518,104 @@
     </p>
 
     <!-- ================================================================
-         GOOGLE FORMS EMBED — 3 steps to make this live:
-         1. In Google Forms, create a form with these questions (mirrors
-            the site's original intake fields):
-              · Your name (short answer, required)
-              · Business name (short answer)
-              · Email (short answer, required — or turn on "Collect emails")
-              · Phone (short answer)
-              · Type of sign (dropdown, required): Storefront / exterior sign,
-                Vehicle wrap or lettering, Banner, Window vinyl / graphics,
-                Dimensional / lobby letters, Trade show display,
-                Wayfinding / directional, Not sure yet, Other
-              · When do you need it? (dropdown): ASAP / rush, Within a month,
-                1–3 months, Just exploring
-              · Rough budget (dropdown): Under $1,000 / $1,000–$5,000 /
-                $5,000–$15,000 / $15,000+ / Not sure
-              · Project location (short answer)
-              · Project details (paragraph, required)
-         2. Click Send → the < > (embed) tab → copy ONLY the URL inside
-            src="..." of the code Google shows you.
-         3. Paste that URL into the iframe src below, replacing
-            PASTE_YOUR_GOOGLE_FORM_EMBED_URL_HERE.
-         Tip: in the form's settings, turn on "Get email notifications for
-         new responses" so submissions hit your inbox immediately.
+         NATIVE INTAKE FORM -> GOOGLE SHEETS
+         Submissions POST to a Google Apps Script that appends rows to
+         your Google Sheet. Follow the setup steps in
+         google-sheets-form-setup.txt, then paste your deployed Web App
+         URL into SCRIPT_URL in the JavaScript at the bottom of this file.
          ================================================================ -->
-    <div class="gform-frame">
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSc3PufcINL7KqgLp6zL4parCBdrHBHLbuB30YH6eGdn7-Z_fw/viewform?usp=sharing&ouid=106690920675368908864"
-        width="100%" height="1150" frameborder="0" marginheight="0" marginwidth="0"
-        title="Project intake form">
-        Loading…
-      </iframe>
-      <p class="gform-fallback">
-        If the form doesn't load, email
-        <a href="mailto:hello@visualresources.net">hello@visualresources.net</a>
-        with your project details.
-      </p>
-    </div>
+    <form class="intake-form" id="intakeForm">
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Your name <span class="req">*</span></label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="business">Business name</label>
+          <input id="business" name="business" type="text" autocomplete="organization">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="email">Email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="type">Type of project <span class="req">*</span></label>
+          <select id="type" name="type" required>
+            <option value="">Select one…</option>
+            <option>Environmental Graphics</option>
+            <option>Outdoor Graphics and Signage</option>
+            <option>Large Format Printing</option>
+            <option>Floor Graphics</option>
+            <option>Window Treatments &amp; Privacy Film</option>
+            <option>Wall Wraps</option>
+            <option>Indoor &amp; Outdoor Banners</option>
+            <option>Trade Show Displays &amp; Graphics</option>
+            <option>Movie Set Graphics</option>
+            <option>SEG Graphics</option>
+            <option>ADA and Tactile Signage</option>
+            <option>Promotional Products</option>
+            <option>Construction Barricades</option>
+            <option>Shipping &amp; Distribution</option>
+            <option>Custom Fabrication</option>
+            <option>Step and Repeat Banners</option>
+            <option>Directional Signage</option>
+            <option>National Installation Services</option>
+            <option>Not sure yet — need guidance</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="timeline">When do you need it?</label>
+          <select id="timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP / rush</option>
+            <option>Within a month</option>
+            <option>1–3 months</option>
+            <option>Just exploring</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="budget">Rough budget</label>
+          <select id="budget" name="budget">
+            <option value="">Select one…</option>
+            <option>Under $1,000</option>
+            <option>$1,000 – $5,000</option>
+            <option>$5,000 – $15,000</option>
+            <option>$15,000+</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="location">Project location</label>
+          <input id="location" name="location" type="text" placeholder="City / site — nationwide OK">
+        </div>
+      </div>
+      <div class="field">
+        <label for="details">Project details <span class="req">*</span></label>
+        <textarea id="details" name="details" required placeholder="What's the project? Any sizes, quantities, deadlines, or examples you like?"></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn" id="submitBtn">Send Project Request</button>
+        <span class="form-note">Typical response time: 1 business day.</span>
+      </div>
+      <div class="confirm" id="confirmMsg" role="status">
+        ✓ Request received. Check your email — I'll be in touch within one business day.
+      </div>
+      <div class="form-error" id="errorMsg" role="alert">
+        Something went wrong sending your request. Please email
+        <a href="mailto:hello@visualresources.net">hello@visualresources.net</a> instead.
+      </div>
+    </form>
   </div>
 </section>
 
@@ -542,7 +631,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="story.html">Our Story</a></li>
+        <li><a href="/story">Our Story</a></li>
         <li><a href="#intake">Start a Project</a></li>
       </ul>
       <ul class="foot-list">
@@ -568,6 +657,30 @@
       document.getElementById('mainnav').classList.remove('open');
       document.querySelector('.menu-toggle').setAttribute('aria-expanded','false');
     });
+  });
+
+  // NATIVE FORM -> GOOGLE SHEETS
+  // Paste your Apps Script Web App URL between the quotes below
+  // (full setup steps: google-sheets-form-setup.txt in the repo)
+  const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+  document.getElementById('intakeForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) })
+      .then(() => {
+        document.getElementById('errorMsg').classList.remove('show');
+        document.getElementById('confirmMsg').classList.add('show');
+        form.reset();
+        document.getElementById('confirmMsg').scrollIntoView({behavior:'smooth', block:'center'});
+      })
+      .catch(() => {
+        document.getElementById('errorMsg').classList.add('show');
+      })
+      .finally(() => { btn.disabled = false; btn.textContent = 'Send Project Request'; });
   });
 </script>
 
